@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Put your description here.">
+  <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
+  <title>Eclipse Travel Agency App</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+  @vite(['inertia/app/app.ts', `inertia/pages/${page.component}.vue`])
+  @inertiaHead()
+</head>
+
+<body>
+  @inertia({ as: 'main', class: 'h-full' })
+</body>
+
+</html>
