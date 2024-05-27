@@ -22,7 +22,7 @@ COPY --from=deps /app/node_modules /app/node_modules
 ADD . .
 
 # Use secret file during build process
-RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env node ace build
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cp /etc/secrets/.env ./build/.env && node ace build
 
 # Production stage
 FROM base
@@ -35,9 +35,7 @@ COPY --from=build /app/build /app
 EXPOSE 8080
 
 # Set environment variables if needed (optional)
-ENV ENV_PATH=/etc/secrets/.env
+ENV ENV_PATH=/app/build/.env
 
 # Use secret file at runtime
 CMD ["node", "./bin/server.js"]
-
-
