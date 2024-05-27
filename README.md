@@ -1,52 +1,42 @@
-# AdonisJS 6 Web Starter Kit
+# Tour Agency Website
 
-![Made with :](https://img.shields.io/badge/Made%20with%20:-brightgreen?style=flat)
-![AdonisJS](https://img.shields.io/badge/AdonisJS-blue?style=flat&logo=adonisjs&logoColor=white)
-![Vue.js](https://img.shields.io/badge/Vue.js-blue?style=flat&logo=vue.js)
-![Inertia.js](https://img.shields.io/badge/Inertia.js-blue?style=flat&logo=inertia&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-blue?style=flat&logo=mysql&logoColor=white)
+Welcome to the Tour Agency Website! This project is built with AdonisJS, PostgreSQL, Tailwind CSS, and HeadlessUI to provide a seamless and efficient user experience for exploring various tours and travel packages.
 
-Ce template est un starter kit construit avec AdonisJS 6 pour le backend et Vue.js 3 pour le frontend.
+## Table of Contents
 
-## Fonctionnalités
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
-- [x] Inscription d'un utilisateur
-- [x] Connexion d'un utilisateur
-- [x] Déconnexion d'un utilisateur
-- [ ] Profil d'un utilisateur
+## Features
 
-## Utilisation
+- **Tour Listings**: Browse and explore a variety of tours with beautiful images and descriptions.
+- **User Authentication**: Secure user authentication and authorization.
+- **Responsive Design**: Fully responsive design using Tailwind CSS.
+- **Interactive UI**: Smooth and interactive UI components with HeadlessUI.
+- **Database Management**: Efficient data management using PostgreSQL.
 
-Une fois le projet créé à partir du template, suivez les étapes ci-dessous :
+## Getting Started
 
-1. Installation des dépendances
+### Prerequisites
+
+Before you begin, ensure you have the following installed on your system:
+
+- [Node.js](https://nodejs.org/en/) (v14 or later)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [PostgreSQL](https://www.postgresql.org/) (v12 or later)
+- [AdonisJS CLI](https://docs.adonisjs.com/guides/installation) (optional but recommended)
+
+### Installation
+
+1. **Clone the repository:**
 
    ```bash
-   cd new-project
-   npm install
-   ```
-
-2. Configuration des variables d'environnement
-
-   Copiez le fichier `.env.example` en tant que `.env` dans le dossier de l'application et mettez à jour les variables d'environnement appropriées.
-
-3. Génération d'une nouvelle valeur pour la variable d'environnement AP_KEY
-
-   ```bash
-   node ace generate:key
-   ```
-
-4. Création des tables dans la base de données
-
-   ```bash
-   node ace migration:run
-   ```
-
-5. Lancement du serveur
-   ```bash
-   npm run dev
-   ```
-
-## Licence
-
-Le projet est sous licence [MIT](https://github.com/Aleowyne/adonis-web-starter-kit/blob/main/LICENSE.md).
+   git clone https://github.com/yourusername/tour-agency.git
+   cd tour-agency
