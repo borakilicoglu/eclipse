@@ -136,6 +136,6 @@ const saveAgency = ({ mode, data }: { data: any; mode: any }) => {
 }
 
 const deleteAgency = (id: any) => {
-  console.log('Deleting agency with id:', id)
+  // console.log('Deleting agency with id:', id)
 }
 </script>
