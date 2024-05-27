@@ -21,8 +21,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
 ADD . .
 
-# Use secret file during build process
-RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cp /etc/secrets/.env .env && node ace build
+# Use secret file during build process and verify the secret
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env \
+    ls -la /etc/secrets && cat /etc/secrets/.env && cp /etc/secrets/.env .env && node ace build
 
 # Verify the build output
 RUN ls -la /app/build
@@ -39,7 +40,7 @@ COPY --from=build /app/build /app
 EXPOSE 8080
 
 # Set environment variables if needed (optional)
-ENV ENV_PATH=/etc/secrets/.env
+ENV ENV_PATH=/app/.env
 
 # Use secret file at runtime and set ENV_PATH
 CMD ["sh", "-c", "ENV_PATH=/app/.env node build/bin/server.js"]
