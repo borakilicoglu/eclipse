@@ -38,6 +38,6 @@ EXPOSE 8080
 ENV ENV_PATH=/etc/secrets/.env
 
 # Use secret file at runtime
-CMD ["node", ".build/bin/server.js"]
+CMD ["node", "./build/bin/server.js"]
 
 
