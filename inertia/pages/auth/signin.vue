@@ -51,5 +51,6 @@ const form = useForm<User>({
   email: '',
   username: '',
   password: '',
+  role: 'guest',
 })
 </script>

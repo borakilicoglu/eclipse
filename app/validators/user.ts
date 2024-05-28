@@ -5,7 +5,7 @@ export const createUserValidator = vine.compile(
     username: vine.string().alphaNumeric({ allowSpaces: true }).minLength(3).maxLength(50),
     email: vine.string().email(),
     password: vine.string().minLength(8).maxLength(32),
-    // role: vine.enum(['admin', 'agency', 'branch', 'guest'] as const),
+    role: vine.enum(['admin', 'agency', 'branch', 'guest'] as const),
   })
 )
 
