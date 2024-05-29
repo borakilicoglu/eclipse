@@ -32,9 +32,12 @@
             >
               <td class="py-3 px-6 text-left">{{ agency.name }}</td>
               <td class="py-3 px-6 text-left">{{ agency.location }}</td>
-              <td class="py-3 px-6 text-left">{{ agency.services?.join(', ') }}</td>
+              <td class="py-3 px-6 text-left">
+                {{ agency?.services?.join(', ') }}
+              </td>
               <td class="py-3 px-6 text-left">{{ agency.phone }}</td>
               <td class="py-3 px-6 text-left">{{ agency.email }}</td>
+              <td class="py-3 px-6 text-left">{{ agency?.user?.username }}</td>
               <td class="py-3 px-6 flex gap-x-2 justify-end">
                 <button @click.stop="openModal('view', agency)" class="w-6 flex justify-center">
                   <Eye
@@ -88,11 +91,12 @@ const isModalOpen = ref(false)
 const modalMode = ref('view')
 const selectedItem = ref<Item | null>(null)
 const headers = ref([
-  'Agency Name',
+  'Name',
   'Location',
   'Services',
   'Contact Number',
   'Contact Email',
+  'Manager',
   'Actions',
 ])
 

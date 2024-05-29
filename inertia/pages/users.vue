@@ -4,10 +4,10 @@
       <div class="flex items-center justify-between">
         <h3 class="text-2xl font-semibold">Users</h3>
         <button
-          class="bg-white py-2 px-4 border border-slate-950 font-semibold hover:bg-slate-950 hover:text-white flex items-center justify-between gap-x-2"
+          class="bg-sky-500 font-semibold h-12 px-4 rounded-lg text-white hover:bg-sky-600 hover:text-white flex items-center justify-between gap-x-2 h-12 px-6"
           @click="openModal('create')"
         >
-          <Plus class="w-5" />
+          <ListPlus class="w-5" />
           Add User
         </button>
       </div>
@@ -83,7 +83,7 @@
 import { ref } from 'vue'
 import { router } from '@inertiajs/vue3'
 import dayjs from 'dayjs'
-import { Plus, Trash2, Eye, FileSliders } from 'lucide-vue-next'
+import { ListPlus, Trash2, Eye, FileSliders } from 'lucide-vue-next'
 import Layout from '@/layouts/dashboard.vue'
 import AsideModal from '@/components/dashboard/asideModal.vue'
 import { Item, Role, User } from '@/types'

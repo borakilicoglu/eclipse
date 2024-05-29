@@ -1,10 +1,9 @@
-import Agency from '#models/agency'
 import { HttpContext } from '@adonisjs/core/http'
+import Agency from '#models/agency'
 
 export default class AgenciesController {
   public async index({ inertia }: HttpContext) {
-    const agencies = await Agency.all()
-    console.log(agencies)
+    const agencies = await Agency.query().preload('user')
 
     return inertia.render('agencies', { agencies })
   }

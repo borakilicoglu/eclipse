@@ -40,4 +40,15 @@ export interface Agency {
   services?: string[]
   phone?: string
   email?: string
+  address?: string
+  user?: User
+}
+export interface Branch {
+  id?: number
+  name?: string
+  location?: string
+  phone?: string
+  email?: string
+  address?: string
+  user?: User
 }

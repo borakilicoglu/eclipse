@@ -2,7 +2,7 @@
   <header
     :class="[
       'bg-white flex flex-col items-center justify-between w-full sticky',
-      isDashboard ? 'px-8' : 'px-0',
+      isDashboard ? 'px-8 shadow-sm' : 'px-0',
     ]"
     v-if="isAuth"
   >
@@ -21,7 +21,7 @@
 
         <Link
           v-if="isDashboard"
-          class="text-slate-900 font-medium flex items-center gap-x-2 py-2 px-3"
+          class="text-slate-900 font-medium flex items-center gap-x-2 py-2"
           href="/"
         >
           <ArrowLeft class="w-5" />
@@ -58,11 +58,11 @@
               <span>
                 {{ formattedUsername }}
               </span>
-              <span class="text-xs capitalize"> {{ user.role }} Manager </span>
+              <span class="text-xs capitalize"> {{ user.role }} {{ userRoleLabel }} </span>
             </div>
 
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsOERpOr7SgX6Q55GS8Yprg2kNd4VBcx1AkHRkEzhsEw&s"
+              src="https://www.shutterstock.com/image-vector/young-smiling-man-avatar-brown-600nw-2261401207.jpg"
               class="rounded-full w-12 h-12 border-4 border-slate-200 p-0.5"
               alt=""
             />
@@ -212,6 +212,10 @@ const isDashboard = computed(() => {
   const url = page.url // Get the current URL from Inertia
   return url.includes('dashboard')
 })
+
+const userRoleLabel = computed(() =>
+  user.role !== 'admin' && user.role !== 'guest' ? 'Manager' : ''
+)
 </script>
 
 <style scoped></style>

@@ -9,11 +9,13 @@
 import router from '@adonisjs/core/services/router'
 import { HttpContext } from '@adonisjs/core/http'
 import { middleware } from '#start/kernel'
+
 const SigninController = () => import('#controllers/signin_controller')
 const LoginController = () => import('#controllers/login_controller')
 const LogoutController = () => import('#controllers/logout_controller')
-const AgenciesController = () => import('#controllers/agencies_controller')
 const UsersController = () => import('#controllers/users_controller')
+const AgenciesController = () => import('#controllers/agencies_controller')
+const BranchesController = () => import('#controllers/branches_controller')
 
 router
   .group(() => {
@@ -25,12 +27,6 @@ router
 
     router.get('/dashboard/profile', (ctx: HttpContext) => {
       return ctx.inertia.render('profile', {
-        title: 'Testing!',
-      })
-    })
-
-    router.get('/dashboard/branches', (ctx: HttpContext) => {
-      return ctx.inertia.render('branches', {
         title: 'Testing!',
       })
     })
@@ -60,6 +56,8 @@ router
     router.get('dashboard/users', [UsersController, 'index'])
     router.put('dashboard/users', [UsersController, 'update'])
     router.post('dashboard/users', [UsersController, 'create'])
+
+    router.get('dashboard/branches', [BranchesController, 'index'])
 
     router.get('logout', [LogoutController, 'index'])
   })

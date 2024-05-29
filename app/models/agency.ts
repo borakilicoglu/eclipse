@@ -1,7 +1,22 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, beforeSave, afterFetch, afterFind } from '@adonisjs/lucid/orm'
+import {
+  BaseModel,
+  column,
+  beforeSave,
+  afterFetch,
+  afterFind,
+  belongsTo,
+} from '@adonisjs/lucid/orm'
+import User from './user.js'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export default class Agency extends BaseModel {
+  @column()
+  declare userId: number
+
+  @belongsTo(() => User)
+  declare user: BelongsTo<typeof User>
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -19,6 +34,9 @@ export default class Agency extends BaseModel {
 
   @column()
   declare email: string
+
+  @column()
+  declare address: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -44,12 +62,13 @@ export default class Agency extends BaseModel {
   public static parseServices(agencies: Agency | Agency[]) {
     if (Array.isArray(agencies)) {
       for (const agency of agencies) {
-        if (typeof agency.services === 'string') {
+        if (typeof agency.services === 'object') {
           agency.services = JSON.parse(agency.services)
         }
       }
     } else {
       if (typeof agencies.services === 'string') {
+        console.log('string')
         agencies.services = JSON.parse(agencies.services)
       }
     }

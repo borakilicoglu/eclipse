@@ -2,147 +2,189 @@ import { BaseSeeder } from '@adonisjs/lucid/seeders'
 import Agency from '#models/agency'
 
 export default class AgencySeeder extends BaseSeeder {
+  static environment = ['development', 'testing', 'production']
+
   public async run() {
     await Agency.createMany([
       {
+        userId: 1,
         name: 'Eclipse',
         location: 'New York, NY',
-        services: JSON.stringify(['Flights', 'Hotels', 'Tours']), // Stringify the array
+        services: JSON.stringify(['Flights', 'Hotels', 'Tours']),
         phone: '123-456-7890',
         email: 'contact@eclipse.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Pronto',
         location: 'Los Angeles, CA',
-        services: JSON.stringify(['Adventure Trips', 'Cruises']), // Stringify the array
+        services: JSON.stringify(['Adventure Trips', 'Cruises']),
         phone: '987-654-3210',
         email: 'info@pronto.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Globetrotter',
         location: 'Miami, FL',
-        services: JSON.stringify(['Luxury Packages', 'Car Rentals']), // Stringify the array
+        services: JSON.stringify(['Luxury Packages', 'Car Rentals']),
         phone: '456-123-7890',
         email: 'support@globetrotter.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Sunshine Travel',
         location: 'San Francisco, CA',
-        services: JSON.stringify(['Flights', 'Hotels', 'Car Rentals']), // Stringify the array
+        services: JSON.stringify(['Flights', 'Hotels', 'Car Rentals']),
         phone: '111-222-3333',
         email: 'contact@sunshinetravel.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Adventure Awaits',
         location: 'Denver, CO',
-        services: JSON.stringify(['Adventure Trips', 'Mountain Climbing']), // Stringify the array
+        services: JSON.stringify(['Adventure Trips', 'Mountain Climbing']),
         phone: '444-555-6666',
         email: 'info@adventureawaits.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Vacation Experts',
         location: 'Orlando, FL',
-        services: JSON.stringify(['Theme Park Tickets', 'Hotels']), // Stringify the array
+        services: JSON.stringify(['Theme Park Tickets', 'Hotels']),
         phone: '777-888-9999',
         email: 'support@vacationexperts.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Paradise Travels',
         location: 'Honolulu, HI',
-        services: JSON.stringify(['Beach Resorts', 'Snorkeling']), // Stringify the array
+        services: JSON.stringify(['Beach Resorts', 'Snorkeling']),
         phone: '101-202-3030',
         email: 'info@paradisetravels.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'City Breaks',
         location: 'Chicago, IL',
-        services: JSON.stringify(['City Tours', 'Museums']), // Stringify the array
+        services: JSON.stringify(['City Tours', 'Museums']),
         phone: '909-808-7070',
         email: 'contact@citybreaks.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Eco Travels',
         location: 'Seattle, WA',
-        services: JSON.stringify(['Eco Tours', 'Hiking']), // Stringify the array
+        services: JSON.stringify(['Eco Tours', 'Hiking']),
         phone: '404-505-6060',
         email: 'info@ecotravels.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Business Travel',
         location: 'New York, NY',
-        services: JSON.stringify(['Corporate Travel', 'Conferences']), // Stringify the array
+        services: JSON.stringify(['Corporate Travel', 'Conferences']),
         phone: '303-404-5050',
         email: 'contact@businesstravel.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Luxury Getaways',
         location: 'Las Vegas, NV',
-        services: JSON.stringify(['Luxury Hotels', 'Casinos']), // Stringify the array
+        services: JSON.stringify(['Luxury Hotels', 'Casinos']),
         phone: '202-303-4040',
         email: 'info@luxurygetaways.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Family Fun',
         location: 'San Diego, CA',
-        services: JSON.stringify(['Family Packages', 'Zoos']), // Stringify the array
+        services: JSON.stringify(['Family Packages', 'Zoos']),
         phone: '606-707-8080',
         email: 'support@familyfun.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Historic Travels',
         location: 'Boston, MA',
-        services: JSON.stringify(['Historic Tours', 'Museums']), // Stringify the array
+        services: JSON.stringify(['Historic Tours', 'Museums']),
         phone: '505-606-7070',
         email: 'info@historictravels.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Romantic Getaways',
         location: 'Paris, France',
-        services: JSON.stringify(['Romantic Packages', 'Dinner Cruises']), // Stringify the array
+        services: JSON.stringify(['Romantic Packages', 'Dinner Cruises']),
         phone: '404-505-6060',
         email: 'contact@romanticgetaways.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Budget Travel',
         location: 'Austin, TX',
-        services: JSON.stringify(['Budget Packages', 'Hostels']), // Stringify the array
+        services: JSON.stringify(['Budget Packages', 'Hostels']),
         phone: '707-808-9090',
         email: 'info@budgettravel.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Wildlife Tours',
         location: 'Nairobi, Kenya',
-        services: JSON.stringify(['Safari Tours', 'Wildlife Viewing']), // Stringify the array
+        services: JSON.stringify(['Safari Tours', 'Wildlife Viewing']),
         phone: '808-909-1010',
         email: 'contact@wildlifetours.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Island Hoppers',
         location: 'Phuket, Thailand',
-        services: JSON.stringify(['Island Tours', 'Boat Trips']), // Stringify the array
+        services: JSON.stringify(['Island Tours', 'Boat Trips']),
         phone: '909-101-2020',
         email: 'info@islandhoppers.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Snow Adventures',
         location: 'Aspen, CO',
-        services: JSON.stringify(['Skiing', 'Snowboarding']), // Stringify the array
+        services: JSON.stringify(['Skiing', 'Snowboarding']),
         phone: '101-202-3030',
         email: 'contact@snowadventures.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Urban Explorers',
         location: 'Tokyo, Japan',
-        services: JSON.stringify(['City Tours', 'Food Tours']), // Stringify the array
+        services: JSON.stringify(['City Tours', 'Food Tours']),
         phone: '202-303-4040',
         email: 'info@urbanexplorers.com',
+        address: '',
       },
       {
+        userId: 1,
         name: 'Cruise Planners',
         location: 'Miami, FL',
-        services: JSON.stringify(['Cruises', 'Boat Rentals']), // Stringify the array
+        services: JSON.stringify(['Cruises', 'Boat Rentals']),
         phone: '303-404-5050',
         email: 'support@cruiseplanners.com',
+        address: '',
       },
     ])
   }
