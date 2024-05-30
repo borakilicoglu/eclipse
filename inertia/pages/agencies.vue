@@ -16,15 +16,22 @@
           <thead>
             <tr class="bg-slate-900 text-slate-300 capitalize text-sm divide-x divide-slate-700">
               <th
+                :class="
+                  index === headers.length - 1 ? 'py-3 w-16 text-left' : 'py-3 px-6 text-left'
+                "
                 v-for="(header, index) in headers"
                 :key="header"
-                :class="{ 'py-3 px-6 text-left': true, 'text-right': index === headers.length - 1 }"
               >
-                {{ header }}
+                <template v-if="index === headers.length - 1">
+                  <Settings class="w-5 mx-auto" stroke-width="1.5" />
+                </template>
+                <template v-else>
+                  {{ header }}
+                </template>
               </th>
             </tr>
           </thead>
-          <tbody class="text-slate-950 text-sm">
+          <tbody class="text-slate-600 text-sm">
             <tr
               v-for="agency in agencies"
               :key="agency.id"
@@ -38,25 +45,36 @@
               <td class="py-3 px-6 text-left">{{ agency.phone }}</td>
               <td class="py-3 px-6 text-left">{{ agency.email }}</td>
               <td class="py-3 px-6 text-left">{{ agency?.user?.username }}</td>
-              <td class="py-3 px-6 flex gap-x-2 justify-end">
-                <button @click.stop="openModal('view', agency)" class="w-6 flex justify-center">
-                  <Eye
-                    stroke-width="1.5"
-                    class="w-5 text-slate-950 hover:text-slate-950 hover:w-6 transition-all duration-100"
-                  />
-                </button>
-                <button @click.stop="openModal('edit', agency)" class="w-6 flex justify-center">
-                  <FileSliders
-                    stroke-width="1.5"
-                    class="w-5 text-slate-950 hover:text-slate-950 hover:w-6 transition-all duration-100"
-                  />
-                </button>
-                <button @click.stop="deleteAgency(agency.id)" class="w-6 flex justify-center">
-                  <Trash2
-                    stroke-width="1.5"
-                    class="w-5 text-slate-950 hover:text-slate-950 hover:w-6 transition-all duration-100"
-                  />
-                </button>
+              <td class="py-3 w-16 flex items-center justify-center">
+                <MenuDropdown :icon="Ellipsis">
+                  <MenuItem>
+                    <button
+                      @click.stop="openModal('view', agency)"
+                      class="flex justify-start items-center gap-x-2 px-4 py-3 w-full hover:bg-slate-100 text-slate-600 hover:text-slate-950"
+                    >
+                      <Eye stroke-width="1.5" class="w-5" />
+                      <span>Show</span>
+                    </button>
+                  </MenuItem>
+                  <MenuItem>
+                    <button
+                      @click.stop="openModal('edit', agency)"
+                      class="flex justify-start items-center gap-x-2 px-4 py-3 w-full hover:bg-slate-100 text-slate-600 hover:text-slate-950"
+                    >
+                      <SquarePen stroke-width="1.5" class="w-5" />
+                      <span>Edit</span>
+                    </button>
+                  </MenuItem>
+                  <MenuItem>
+                    <button
+                      @click.stop="deleteAgency(agency.id)"
+                      class="flex justify-start items-center gap-x-2 px-4 py-3 w-full hover:bg-slate-100 text-slate-600 hover:text-slate-950"
+                    >
+                      <Trash2 stroke-width="1.5" class="w-5" />
+                      <span>Delete</span>
+                    </button>
+                  </MenuItem>
+                </MenuDropdown>
               </td>
             </tr>
           </tbody>
@@ -77,10 +95,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { router } from '@inertiajs/vue3'
-import { ListPlus, Trash2, Eye, FileSliders } from 'lucide-vue-next'
+import { ListPlus, Trash2, Eye, SquarePen, Ellipsis, Settings } from 'lucide-vue-next'
 import Layout from '@/layouts/dashboard.vue'
 import AsideModal from '@/components/dashboard/asideModal.vue'
 import { Agency, Item } from '@/types'
+import MenuDropdown from '@/components/menuDropdown.vue'
+import { MenuItem } from '@headlessui/vue'
 
 defineProps<{
   agencies: Agency[]

@@ -1,17 +1,19 @@
 <template>
   <Error />
-  <main class="h-full w-full flex flex-col">
+  <div class="h-full w-full flex flex-col">
     <Header />
     <div
-      class="h-full bg-cover bg-center items-center justify-center flex"
+      class="bg-cover bg-center items-center justify-center flex flex-col flex-1"
       :class="{ 'bg-white': !isLoginOrRegister }"
-      :style="backgroundImageStyle"
+      :style="{
+        backgroundImage: isLoginOrRegister
+          ? 'url(https://images.unsplash.com/photo-1586515779592-d94f096e4c41?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)'
+          : '',
+      }"
     >
       <slot></slot>
     </div>
-  </main>
-  <div v-if="!isLoginOrRegister">
-    <Footer />
+    <Footer v-if="!isLoginOrRegister" />
   </div>
 </template>
 
@@ -29,16 +31,6 @@ const page = usePage()
 const isLoginOrRegister = computed(() => {
   const url = page.url // Get the current URL from Inertia
   return url === '/login' || url === '/signin'
-})
-
-// Set the background image style conditionally
-const backgroundImageStyle = computed(() => {
-  if (isLoginOrRegister.value) {
-    return {
-      backgroundImage: `url('https://images.unsplash.com/photo-1586515779592-d94f096e4c41?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
-    }
-  }
-  return {}
 })
 </script>
 

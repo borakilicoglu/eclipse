@@ -52,3 +52,25 @@ export interface Branch {
   address?: string
   user?: User
 }
+
+export interface Category {
+  id?: number
+  name?: string
+  description?: string
+  tours: Tour[]
+}
+export interface Destination {
+  id?: number
+  name?: string
+  country?: string
+  description?: string
+  rating?: number
+  tours: Tour[]
+}
+export interface Tour {
+  id?: number
+  name?: string
+  description?: string
+  price?: number
+  destinations: Destination[]
+}

@@ -191,7 +191,7 @@ const user = page.props.user
 
 const navLinks = ref([
   { text: 'Destinations', href: '/', active: true },
-  { text: 'Otels', href: '/', active: false },
+  { text: 'Categories', href: '/', active: false },
   { text: 'Tours', href: '/', active: false },
   { text: 'Trips', href: '/', active: false },
   { text: 'Popular', href: '/', active: false },

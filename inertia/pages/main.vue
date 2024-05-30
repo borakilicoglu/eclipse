@@ -1,12 +1,23 @@
 <template>
   <Layout>
-    <div class="grid grid-cols-5 w-full h-full container mx-auto gap-x-6">
-      <div v-for="tour in tours" :key="tour.id" class="w-full flex flex-col gap-y-1">
-        <img class="rounded-lg object-cover aspect-square" :src="tour.image" :alt="tour.title" />
-        <p class="font-semibold">{{ tour.title }}</p>
-        <p>{{ tour.description }}</p>
+    <section>
+      <div class="grid grid-cols-5 w-full h-full container mx-auto gap-x-6">
+        <div v-for="tour in tours" :key="tour.id" class="w-full flex flex-col gap-y-1">
+          <img class="rounded-lg object-cover aspect-square" :src="tour.image" :alt="tour.title" />
+          <p class="font-semibold">{{ tour.title }}</p>
+          <p>{{ tour.description }}</p>
+        </div>
       </div>
-    </div>
+    </section>
+    <section class="pb-12">
+      <div class="grid grid-cols-5 w-full h-full container mx-auto gap-x-6">
+        <div v-for="tour in tours" :key="tour.id" class="w-full flex flex-col gap-y-1">
+          <img class="rounded-lg object-cover aspect-square" :src="tour.image" :alt="tour.title" />
+          <p class="font-semibold">{{ tour.title }}</p>
+          <p>{{ tour.description }}</p>
+        </div>
+      </div>
+    </section>
   </Layout>
 </template>
 

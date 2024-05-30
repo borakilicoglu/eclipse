@@ -46,7 +46,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Link, usePage } from '@inertiajs/vue3'
-import { Home, Handshake, Bus, UsersRound, PlaneTakeoff, Monitor } from 'lucide-vue-next'
+import { Home, Handshake, Bus, UsersRound, PlaneTakeoff, Monitor, Layers } from 'lucide-vue-next'
 import Header from '@/components/header.vue'
 import Error from '@/components/message.vue'
 
@@ -59,6 +59,7 @@ const isActiveLink = (href: string) => {
 const links = ref([
   { text: 'Agencies', href: '/dashboard/agencies', icon: Home },
   { text: 'Branches', href: '/dashboard/branches', icon: Handshake },
+  { text: 'Categories', href: '/dashboard/categories', icon: Layers },
   { text: 'Destinations', href: '/dashboard/destinations', icon: PlaneTakeoff },
   { text: 'Tours', href: '/dashboard/tours', icon: Bus },
   { text: 'Users', href: '/dashboard/users', icon: UsersRound },

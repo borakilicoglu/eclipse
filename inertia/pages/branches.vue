@@ -16,15 +16,22 @@
           <thead>
             <tr class="bg-slate-900 text-slate-300 capitalize text-sm divide-x divide-slate-700">
               <th
+                :class="
+                  index === headers.length - 1 ? 'py-3 w-16 text-left' : 'py-3 px-6 text-left'
+                "
                 v-for="(header, index) in headers"
                 :key="header"
-                :class="{ 'py-3 px-6 text-left': true, 'text-right': index === headers.length - 1 }"
               >
-                {{ header }}
+                <template v-if="index === headers.length - 1">
+                  <Settings class="w-5 mx-auto" stroke-width="1.5" />
+                </template>
+                <template v-else>
+                  {{ header }}
+                </template>
               </th>
             </tr>
           </thead>
-          <tbody class="text-slate-950 text-sm">
+          <tbody class="text-slate-600 text-sm">
             <tr
               v-for="branch in branches"
               :key="branch.id"
@@ -36,25 +43,36 @@
               <td class="py-3 px-6 text-left">{{ branch.phone }}</td>
               <td class="py-3 px-6 text-left">{{ branch.email }}</td>
               <td class="py-3 px-6 text-left">{{ branch?.user?.username }}</td>
-              <td class="py-3 px-6 flex gap-x-2 justify-end">
-                <button @click.stop="openModal('view', branch)" class="w-6 flex justify-center">
-                  <Eye
-                    stroke-width="1.5"
-                    class="w-5 text-slate-600 hover:text-slate-950 hover:w-6 transition-all duration-100"
-                  />
-                </button>
-                <button @click.stop="openModal('edit', branch)" class="w-6 flex justify-center">
-                  <SquarePen
-                    stroke-width="1.5"
-                    class="w-5 text-slate-600 hover:text-slate-950 hover:w-6 transition-all duration-100"
-                  />
-                </button>
-                <button @click.stop="deleteAgency(branch.id)" class="w-6 flex justify-center">
-                  <Trash2
-                    stroke-width="1.5"
-                    class="w-5 text-slate-600 hover:text-slate-950 hover:w-6 transition-all duration-100"
-                  />
-                </button>
+              <td class="py-3 w-16 flex items-center justify-center">
+                <MenuDropdown :icon="Ellipsis">
+                  <MenuItem>
+                    <button
+                      @click.stop="openModal('view', branch)"
+                      class="flex justify-start items-center gap-x-2 px-4 py-3 w-full hover:bg-slate-100 text-slate-600 hover:text-slate-950"
+                    >
+                      <Eye stroke-width="1.5" class="w-5" />
+                      <span>Show</span>
+                    </button>
+                  </MenuItem>
+                  <MenuItem>
+                    <button
+                      @click.stop="openModal('edit', branch)"
+                      class="flex justify-start items-center gap-x-2 px-4 py-3 w-full hover:bg-slate-100 text-slate-600 hover:text-slate-950"
+                    >
+                      <SquarePen stroke-width="1.5" class="w-5" />
+                      <span>Edit</span>
+                    </button>
+                  </MenuItem>
+                  <MenuItem>
+                    <button
+                      @click.stop="deleteBranch(branch.id)"
+                      class="flex justify-start items-center gap-x-2 px-4 py-3 w-full hover:bg-slate-100 text-slate-600 hover:text-slate-950"
+                    >
+                      <Trash2 stroke-width="1.5" class="w-5" />
+                      <span>Delete</span>
+                    </button>
+                  </MenuItem>
+                </MenuDropdown>
               </td>
             </tr>
           </tbody>
@@ -66,7 +84,7 @@
         :editableFields="['name', 'location', 'phone', 'email']"
         :item="selectedItem"
         @close="closeModal"
-        @save="saveAgency"
+        @save="saveBranch"
       />
     </div>
   </Layout>
@@ -75,10 +93,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { router } from '@inertiajs/vue3'
-import { ListPlus, Trash2, Eye, SquarePen } from 'lucide-vue-next'
+import { ListPlus, Trash2, Eye, SquarePen, Ellipsis, Settings } from 'lucide-vue-next'
 import Layout from '@/layouts/dashboard.vue'
 import AsideModal from '@/components/dashboard/asideModal.vue'
 import { Branch, Item } from '@/types'
+import MenuDropdown from '@/components/menuDropdown.vue'
+import { MenuItem } from '@headlessui/vue'
 
 defineProps<{
   branches: Branch[]
@@ -130,12 +150,12 @@ const closeModal = () => {
   selectedItem.value = null
 }
 
-const saveAgency = ({ mode, data }: { data: any; mode: any }) => {
-  mode === 'edit' ? router.post('/dashboard/agencies', data) : false
+const saveBranch = ({ mode, data }: { data: any; mode: any }) => {
+  mode === 'edit' ? router.post('/dashboard/branches', data) : false
   closeModal()
 }
 
-const deleteAgency = (id: any) => {
+const deleteBranch = (id: any) => {
   console.log('Deleting agency with id:', id)
 }
 </script>
