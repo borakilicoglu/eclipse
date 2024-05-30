@@ -8,8 +8,8 @@
             <h2 class="text-xl font-semibold text-slate-950">{{ modalTitle }}</h2>
             <button @click="closeModal" class="text-slate-500 hover:text-slate-950">Close</button>
           </div>
-          <form @submit.prevent="handleSubmit">
-            <div v-for="(_value, key) in visibleFormData" :key="key" class="mb-4">
+          <form @submit.prevent="handleSubmit" class="flex flex-col gap-y-4">
+            <div v-for="(_value, key) in visibleFormData" :key="key">
               <label :for="String(key)" class="block font-semibold mb-2 capitalize">{{
                 key
               }}</label>
@@ -26,13 +26,13 @@
                 :id="String(key)"
                 :type="key === 'password' ? 'password' : 'text'"
                 :readonly="mode === 'view'"
-                class="w-full p-2 border border-slate-950"
+                class="w-full p-2 border border-slate-950 h-12 rounded-lg"
               />
             </div>
             <button
               v-if="mode !== 'view'"
               type="submit"
-              class="mt-4 bg-slate-800 text-white py-2 w-full px-4 hover:bg-slate-950"
+              class="bg-sky-500 font-semibold h-12 rounded-lg text-white hover:bg-sky-600 flex items-center justify-center px-6 w-full mt-4"
             >
               Save
             </button>

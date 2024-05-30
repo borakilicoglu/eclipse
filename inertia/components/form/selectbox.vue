@@ -2,7 +2,7 @@
   <Listbox v-model="selectedItem">
     <div class="relative">
       <ListboxButton
-        class="relative w-full cursor-pointer bg-white py-2 pl-2 text-left border border-slate-950 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300"
+        class="relative w-full cursor-pointer bg-white h-12 rounded-lg pl-2 text-left border border-slate-950 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300"
       >
         <span class="block truncate capitalize">{{ selectedItem || placeholder }}</span>
       </ListboxButton>
@@ -13,7 +13,7 @@
         leave-to-class="opacity-0"
       >
         <ListboxOptions
-          class="absolute mt-1 max-h-60 w-full overflow-auto bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
+          class="absolute mt-1 max-h-60 w-full overflow-auto bg-white shadow-lg ring-1 ring-black/5 focus:outline-none rounded-lg"
         >
           <ListboxOption
             v-slot="{ active, selected }"
@@ -25,7 +25,7 @@
             <li
               :class="[
                 active ? 'bg-slate-800 text-white' : 'text-slate-900',
-                'relative cursor-pointer select-none py-2 px-2',
+                'relative cursor-pointer select-none h-12 px-2 flex items-center',
               ]"
             >
               <span

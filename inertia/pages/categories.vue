@@ -39,6 +39,11 @@
             >
               <td class="py-3 px-6 text-left">{{ category.name }}</td>
               <td class="py-3 px-6 text-left">{{ category.description }}</td>
+              <td class="py-3 px-6 text-left">
+                <span v-for="(tour, index) in category.tours" :key="index">
+                  {{ tour.name }}<span v-if="index < category.tours.length - 1">, </span>
+                </span>
+              </td>
               <td class="py-3 w-16 flex items-center justify-center">
                 <MenuDropdown :icon="Ellipsis">
                   <MenuItem>
