@@ -45,10 +45,14 @@
       </nav>
 
       <div class="flex items-center gap-x-4 w-1/3 justify-end">
-        <button class="bg-slate-200 h-10 w-10 flex items-center justify-center rounded-full">
+        <button
+          class="bg-slate-200 h-10 w-10 flex items-center justify-center rounded-full hover:bg-slate-300 transition ease-in-out duration-200"
+        >
           <Bell class="w-5 text-slate-700" />
         </button>
-        <button class="bg-slate-200 h-10 w-10 flex items-center justify-center rounded-full">
+        <button
+          class="bg-slate-200 h-10 w-10 flex items-center justify-center rounded-full hover:bg-slate-300 transition ease-in-out duration-200"
+        >
           <MessageCircleMore class="w-5 text-slate-700" />
         </button>
 
